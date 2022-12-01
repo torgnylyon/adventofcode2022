@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my ($max, $a) = (0);
+
+while (<>) {
+    chomp;
+    unless (length) {
+        $max = $a if $a > $max;
+        $a = 0;
+    } else {
+        $a += $_;
+    }
+}
+print "$max\n";
