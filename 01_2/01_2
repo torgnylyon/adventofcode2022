@@ -1,0 +1,22 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use List::Util qw(sum);
+
+my $acc;
+my @l;
+
+while (<>) {
+    chomp;
+    unless (length) {
+        push @l, ($acc);
+        $acc = 0;
+    } else {
+        $acc += $_;
+    }
+}
+push @l, ($acc);
+my $top = sum ((reverse sort { $a <=> $b } @l)[0..2]);
+print "$top\n";
