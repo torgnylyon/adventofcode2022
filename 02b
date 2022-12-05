@@ -1,0 +1,16 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my %h = ( 'X' => [ 0, { A => 3, B => 1, C => 2 } ],
+          'Y' => [ 3, { A => 1, B => 2, C => 3 } ],
+          'Z' => [ 6, { A => 2, B => 3, C => 1 } ]
+);
+
+my $total;
+while (<>) {
+    my ($o, $e) = split;
+    $total += $h{$e}[0] + $h{$e}[1]{$o};
+}
+print "$total\n";
