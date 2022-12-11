@@ -1,0 +1,13 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use List::Util qw(pairs);
+
+my $t;
+while (<>) {
+    my @l = sort { $a->[0] > $b->[0] } pairs /(\d+)-(\d+),(\d+)-(\d+)/;
+    ++$t if $l[0]->[1] >= $l[1]->[0];
+}
+print "$t\n";
