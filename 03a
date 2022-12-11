@@ -1,0 +1,18 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use List::Util qw(uniq);
+
+my $t;
+while (<>) {
+    chomp;
+    my @l = split //;
+    my @c = ();
+    foreach my $e (@l[0..($#l / 2)]) {
+        push @c, grep { $e eq $_ } @l[($#l / 2 + 1)..$#l];
+    }
+    $t += ord() - ((/[a-z]/) ? ord '`' : (ord('@') - 26)) foreach (uniq @c);
+}
+print "$t\n";
