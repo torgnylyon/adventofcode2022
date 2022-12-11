@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my $t;
+while (<>) {
+    my @l = /(\d+)-(\d+),(\d+)-(\d+)/;
+    if ($l[1] - $l[0] < $l[3] - $l[2]) {
+        $t++ if $l[0] >= $l[2] && $l[1] <= $l[3];
+    } else {
+        $t++ if $l[2] >= $l[0] && $l[3] <= $l[1];
+    }
+}
+print "$t\n";
