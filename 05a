@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my @l;
+while (<>) {
+  last if /^ 1/;
+  my $i=1;
+  while (/.(.). ?/g) {
+    unshift @{ $l[$i] }, $1 if $1 ne q{ };
+    $i++;
+  }
+}
+while (<>) {
+  my ($c, $s, $d) = /move (\d+) from (\d+) to (\d+)/;
+  push @{ $l[$d] }, pop @{ $l[$s] } while $c--;
+}
+print "@{$_}[$#_]" foreach (@l[1..$#l]);
+print "\n";
